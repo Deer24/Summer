@@ -10,11 +10,11 @@ int main(int argc, char* argv[])
 	printf("输入n:");
 	scanf("%d",&n);
 	printf("输入n个数:");
-	for(i=0;i<10;i++)
+	for(i=0;i<n;i++)
 		scanf("%d",&a[i]);
 	//找最小值a[index]
 	index=0;//假设a[0]是最小值，即下标为0的元素最小
-	for(i=1;i<10;i++)
+	for(i=1;i<n;i++)
 		if(a[i]<a[index])//若a[i]比假设的最小值小
 			index=i;//假设a[i]是新的最小值，即下标为i的元素最小	
 	printf("最小值为%d,其下标为%d\n",a[index],index);
