@@ -1,0 +1,21 @@
+// 数组：输出斐波那契数列.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+int main(int argc, char* argv[])
+{
+	int i;
+	int f[10]={1,1};//数组初始化，生成斐波那契数列前两个数
+	//计算剩余8个数
+	for(i=2;i<10;i++)
+		f[i]=f[i-1]+f[i-2];
+	//输出斐波那契数列
+	for(i=0;i<10;i++)
+	{
+		printf("%d ",f[i]);
+		if((i+1)%5==0)//每输出5个数就换行
+			printf("\n");
+	}
+	return 0;
+}
