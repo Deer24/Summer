@@ -1,0 +1,31 @@
+  // 选择排序法.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+int main(int argc, char* argv[])
+{
+	int i,index,k,n,temp;
+	int a[10];
+	printf("输入n:");
+	scanf("%d",&n);
+	printf("输入n个数:");
+	for(i=0;i<n;i++)
+		scanf("%d",&a[i]);
+	//对n个数排序
+	for(k=0;k<n-1;k++)
+	{
+		index=k;//index存放最小值所在下标
+		for(i=k+1;i<n;i++)//寻找最小值所在下标
+			if(a[i]<a[index])
+				index=i;
+			temp=a[index];//最小元素与下标为k的元素交换
+			a[index]=a[k];
+			a[k]=temp;
+	}
+	printf("结果：");
+	for(i=0;i<n;i++)
+		printf("%d ",a[i]);
+	printf("\n");
+	return 0;
+}
