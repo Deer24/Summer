@@ -1,0 +1,32 @@
+// 找出矩阵最大值所在位置.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+int main(int argc, char* argv[])
+{
+	int col,row,i,j;
+	int a[3][2];
+	printf("输入6个数：");
+	for(i=0;i<3;i++)
+		for(j=0;j<2;j++)
+			scanf("%d",&a[i][j]);
+	//按矩阵形式输出二维数组a
+	for(i=0;i<3;i++)
+	{
+		for(j=0;j<2;j++)
+			printf("%4d ",a[i][j]);
+	    printf("\n");
+	}
+	//找出最大值
+	row=col=0;//假设a[0][0]是最大值
+	for(i=0;i<3;i++)
+		for(j=0;j<2;j++)
+			if(a[i][j]>a[row][col])//若a[i][j]比假设值大
+			{
+				row=i;//再假设a[i][j]是新的最大值
+				col=j;
+			}
+	printf("max=a[%d][%d]=%d\n",row,col,a[row][col]);
+	return 0;
+}
