@@ -1,0 +1,33 @@
+// 冒泡排序法.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+int main(int argc, char* argv[])
+{
+	int a[10],i,j,tmp;
+	int count=0;
+	printf("输入10个数:\n");
+	for(i=0;i<10;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	for(i=0;i<10;i++)
+	{
+		for(j=9;j>i;j--)
+		{
+			if(a[j]>a[j-1])
+			{
+				tmp=a[j];
+				a[j]=a[j-1];
+				a[j-1]=tmp;
+                count++;
+			}
+		}
+	}
+	for(i=0;i<10;i++)
+		printf("%d ",a[i]);
+	printf("\n");
+	printf("count=%d\n",count);
+	return 0;
+}
