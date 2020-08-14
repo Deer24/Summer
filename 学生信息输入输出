@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+    int data;
+    char name[20];
+    int grade;
+    struct Node *next;
+};
+
+struct Node* Create()
+{
+    int i;
+    struct Node *head,*node=NULL,*end;
+    head=(struct Node*)malloc(sizeof(struct Node));
+    end=head;
+    while(1)
+    {
+        scanf("%d",&i);
+        if(i!=0)
+        {
+            node=(struct Node*)malloc(sizeof(struct Node));
+            node->data=i;
+            scanf("%s%d",node->name,&node->grade);
+            end->next=node;
+            end=node;
+        }
+        else break;
+    }
+    end->next=NULL;
+    return head;
+}
+
+int main()
+{
+    struct Node *head;
+    head=Create();
+    struct Node *p=head;
+    for(p=head->next;p->next!=NULL;p=p->next)
+    {
+        printf("%d %s %d\n",p->data,p->name,p->grade);
+    }
+        printf("%d %s %d\n",p->data,p->name,p->grade);
+    return 0;
+}
