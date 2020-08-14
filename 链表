@@ -1,0 +1,49 @@
+#include "stdafx.h"
+#include <stdlib.h>
+struct person{
+	char name[20];
+	int score;
+	int num; 
+	struct person *next;
+};
+
+int main(int argc, char* argv[])
+{
+	struct person *p,*q,*Head=NULL;
+	int n=3,i;
+	//依次创建n个链表节点，并加入到链表头中
+	for(i=0;i<n;i++)
+	{
+	    //创建一个节点
+	    p=(struct person*)malloc(sizeof(struct person));
+	    scanf("%s%d%d",p->name,&p->num,&p->score);
+	    p->next=NULL;
+	    //printf("%s %d %d\n",p->name,p->num,p->score);
+	    //free(p);
+	    //加入到链表头位置中
+	    p->next=Head;
+	    Head=p;
+	}
+	printf("%d nodes have been added to the chain\n",n);
+	//依次输出链表的节点
+	p=Head;
+	while(p!=NULL)
+	{
+		printf("%s %d %d\n",p->name,p->num,p->score);
+		p=p->next;
+	}
+	printf("%d nodes have been printed\n",n);
+	//删除链表的所有节点
+	do
+	{
+		p=Head;
+		if(p!=NULL)
+		{
+			Head=Head->next;
+			free(p);
+			printf("1 node have been deleted\n");
+		}
+	}while(Head!=NULL);
+	 
+	return 0;
+}
