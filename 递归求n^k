@@ -1,0 +1,24 @@
+// 递归求n的k次方.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include<stdlib.h>
+
+int power(int n,int k)
+{
+	if(k==0)
+		return 1;
+	if(k==1)
+		return n;
+	return n*power(n,k-1);
+}
+
+int main(int argc, char* argv[])
+{
+	int n,k;
+	printf("输入n和k：");
+	scanf("%d%d",&n,&k);
+	printf("结果为：%d\n",power(n,k));
+	system("pause");
+	return 0;
+}
