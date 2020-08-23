@@ -1,0 +1,28 @@
+// 汉诺塔问题.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+void hanio(int n,char a,char b,char c);
+int main(int argc, char* argv[])
+{
+	int n;
+	printf("输入盘子数量：");
+	scanf("%d",&n);
+	printf("%d个盘子需要搬动步骤为：\n",n);
+	hanio(n,'a','b','c');
+	return 0;
+}
+
+//搬动n个盘子，从a到b，c为中间过渡
+void hanio(int n,char a,char b,char c)
+{
+	if(n==1)
+		printf("%c->%c\n",a,b);
+	else
+	{
+		hanio(n-1,a,c,b);
+		printf("%c->%c\n",a,b);
+		hanio(n-1,c,b,a);
+	}
+}
