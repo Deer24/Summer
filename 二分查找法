@@ -1,0 +1,45 @@
+// 二分查找法.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+int search(int key,int a[],int n)
+{
+	int low,high,mid,count=0;
+	int number=0;
+	low=0;
+	high=n-1;
+	while(low<high)//查找范围不为0时执行循环
+	{
+		count++;//count记录查找次数
+		mid=(low+high)/2;//求中间位置
+		if(key<a[mid])
+			high=mid-1;//确定左边范围
+		else if(key>a[mid])
+			low=mid+1;//确定右边范围
+		else if(key==a[mid])//key等于中间值时，查找成功
+		{
+			printf("查找成功！\n 查找%d次！a[%d]=%d",count,mid,key);//输出查找次数及所查找元素在数组中的位置
+			number++;//count1记录查找成功次数
+			break;
+		}
+	}
+	if(number==0)//判断查找是否失败
+		printf("查找失败！\n");
+	return 0;
+}
+
+int main(int argc, char* argv[])
+{
+	int i,key,a[100],n;
+	printf("输入n：");
+	scanf("%d",&n);
+	printf("输入数组元素：");
+	for(i=0;i<n;i++)
+		scanf("%d",&a[i]);
+	printf("输入要查找元素：");
+	scanf("%d",&key);
+	search(key,a,n);//调用自定义函数
+	printf("\n");
+	return 0;
+}
