@@ -1,0 +1,56 @@
+// 贪心算法2.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <stdio.h>
+
+void swap (double a ,double b) //定义一个交换函数
+{
+    double x;
+    x=a;a=b;b=x;
+}
+
+int main ()
+{
+	  int n,i,j;
+    double  W,w[100],v[100],s[100],sum=0,k; //三个数组分别代表了重量价值和均价
+    printf("输入物品的个数和背包的容量:\n");
+    scanf("%d %lf",&n,&W);
+    printf("逐个输入物品的质量:\n");
+    for(i=0;i<n;i++)
+		scanf("%lf",&w[i]);
+    printf ("逐个输入物品的价值:\n");
+	for(i=0;i<n;i++)
+		scanf ("%lf",&v[i]);
+	for(i=0;i<n;i++)
+		s[i]=v[i]/w[i];//均价等于总价除质量
+	for(i=0;i<n-1;i++)
+		for(j=0;i<j-1-i;j++)
+			if(s[j]<s[j])
+			{
+				swap(s[j],s[j-1]);//把均价最高的放在数组第一位，同时总量和价值也交换
+				swap(w[j],w[j-1]);
+				swap(v[i],v[i-1]);
+			}
+
+	for(i=0;W>0;i++)
+	{
+		if (W>w[i])//当可以把物品i全部放入时
+		{
+			sum+=s[i]*w[i];
+			W=W-w[i];
+		}
+		else
+		{
+			sum+=s[i]*W;//放满背包放i的一部分
+			k=W;
+			W=0;
+		}
+	}      
+	for(j=0;j<i-1;j++)  
+		printf("需要总价为%lf的质量%lf\n",v[j],w[j] );//输出 
+	printf("需要总价为%lf的质量%lf\n",v[j],k);
+	printf("总价值最大为%lf\n",sum);
+
+	return 0;
+}
